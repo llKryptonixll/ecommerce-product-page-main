@@ -7,12 +7,89 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap" rel="stylesheet">
-  
+
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
   <link rel="stylesheet" href="css/styles.css">
+
+  <script src="js/app.js" defer></script>
+
   <title>Frontend Mentor | E-commerce product page</title>
 </head>
-<body>
+<body class="font-Kumbh_Sans">
+
+  <!-- sidebar navigation for small devices -->
+  <aside id="sidebar" class="fixed bg-black h-screen w-full z-20 hidden">
+    <nav class="bg-white w-[300px] h-full overflow-y-auto">
+      <div class="h-[100px] flex items-center">
+        <img id="close-sidebar-button" class="pl-6 cursor-pointer" src="images/icon-close.svg" alt="close-sidebar-button">
+      </div>
+
+      <ul class="pl-6 pt-10 grid gap-6">
+        <li>
+          <a class="font-bold text-very_dark_blue text-xl" href="#">Collections</a>
+        </li>
+        <li>
+          <a class="font-bold text-very_dark_blue text-xl" href="#">Men</a>
+        </li>
+        <li>
+          <a class="font-bold text-very_dark_blue text-xl" href="#">Women</a>
+        </li>
+        <li>
+          <a class="font-bold text-very_dark_blue text-xl" href="#">About</a>
+        </li>
+        <li>
+          <a class="font-bold text-very_dark_blue text-xl" href="#">Contact</a>
+        </li>
+      </ul>
+    </nav>
+  </aside>
+
+  <header class="container grid grid-rows-6 h-screen mx-auto">
+    <nav class="flex justify-between items-center md:w-auto w-[90%] md:justify-self-auto justify-self-center">
+      <div class="flex gap-12 items-center">
+        <div class="flex gap-5 items-center">
+          <!-- sidebar toggle -->
+          <img id="sidebar-toggle" src="images/icon-menu.svg" class="w-[20px] cursor-pointer md:hidden flex">
+          <img src="images/logo.svg" alt="company-logo">
+        </div>
+        <ul class="gap-8 md:flex hidden">
+          <li>
+            <a class="text-dark_grayish_blue hover:text-very_dark_blue text-lg" href="#">Collections</a>
+          </li>
+          <li>
+            <a class="text-dark_grayish_blue hover:text-very_dark_blue text-lg" href="#">Men</a>
+          </li>
+          <li>
+            <a class="text-dark_grayish_blue hover:text-very_dark_blue text-lg" href="#">Women</a>
+          </li>
+          <li>
+            <a class="text-dark_grayish_blue hover:text-very_dark_blue text-lg" href="#">About</a>
+          </li>
+          <li>
+            <a class="text-dark_grayish_blue hover:text-very_dark_blue text-lg" href="#">Contact</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <div class="flex items-center sm:gap-8 gap-6">
+          <div class="relative">
+            <img class="cursor-pointer w-[30px]" src="images/icon-cart.svg" alt="navbar-shopping-cart-logo">
+
+            <!-- cart item number -->
+            <span class="absolute top-[-8px] left-[10px] bg-orange w-[28px] h-[18px] rounded-xl text-sm text-center text-white">3</span>
+          </div>
+          <div class="sm:w-[60px] w-[30px]">
+            <img class="cursor-pointer hover:border-2 border-pale_orange rounded-full" src="images/image-avatar.png" alt="navbar-user-profile">
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </nav>
+
+    <div class="bg-blue-500 h-full row-span-5">
+
+    </div>
+  </header>
 
 </body>
 </html>

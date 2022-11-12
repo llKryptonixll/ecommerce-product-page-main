@@ -14,7 +14,7 @@ module.exports = {
         grayish_blue: "hsl(220, 14%, 75%)",
         light_grayish_blue: "hsl(223, 64%, 98%)",
         white: "hsl(0, 0%, 100%)",
-        black: "hsl(0, 0%, 0%)", // 75% opacity needed
+        black: "hsl(0, 0%, 0%, 75%)", // 75% opacity needed
       }
     },
   },
