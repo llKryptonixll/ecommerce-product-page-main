@@ -10,6 +10,7 @@
 
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/swiper-bundle.min.css">
 
   <script src="js/app.js" defer></script>
 
@@ -44,15 +45,15 @@
     </nav>
   </aside>
 
-  <header class="container grid grid-rows-6 h-screen mx-auto">
-    <nav class="flex justify-between items-center md:w-auto w-[90%] md:justify-self-auto justify-self-center">
-      <div class="flex gap-12 items-center">
-        <div class="flex gap-5 items-center">
+  <header class="container grid grid-rows-6 h-screen mx-auto min-h-[750px] gap-5">
+    <nav id="nav" class="flex justify-between items-center md:w-auto w-[90%] md:justify-self-auto justify-self-center sm:border-b-[1px] border-grayish_blue space-x-5 relative">
+      <div class="flex space-x-12 items-center">
+        <div class="flex space-x-5 items-center">
           <!-- sidebar toggle -->
           <img id="sidebar-toggle" src="images/icon-menu.svg" class="w-[20px] cursor-pointer md:hidden flex">
           <img src="images/logo.svg" alt="company-logo">
         </div>
-        <ul class="gap-8 md:flex hidden">
+        <ul class="space-x-8 md:flex hidden">
           <li>
             <a class="text-dark_grayish_blue hover:text-very_dark_blue text-lg" href="#">Collections</a>
           </li>
@@ -71,12 +72,12 @@
         </ul>
       </div>
       <div>
-        <div class="flex items-center sm:gap-8 gap-6">
-          <div class="relative">
+        <div class="flex items-center sm:space-x-8 space-x-6">
+          <div id="shopping-cart-button" class="relative">
             <img class="cursor-pointer w-[30px]" src="images/icon-cart.svg" alt="navbar-shopping-cart-logo">
 
             <!-- cart item number -->
-            <span class="absolute top-[-8px] left-[10px] bg-orange w-[28px] h-[18px] rounded-xl text-sm text-center text-white">3</span>
+            <span id="cart-quantity-indicator" class="absolute top-[-8px] left-[10px] bg-orange w-[28px] h-[18px] rounded-xl text-sm text-center text-white">0</span>
           </div>
           <div class="sm:w-[60px] w-[30px]">
             <img class="cursor-pointer hover:border-2 border-pale_orange rounded-full" src="images/image-avatar.png" alt="navbar-user-profile">
@@ -84,12 +85,135 @@
         </div>
         <div></div>
       </div>
+
+      <!-- shopping cart -->
+      <aside id="shopping-cart" class="absolute bg-white shadow-2xl right-0 top-[100%] sm:w-[400px] w-full h-[300px] hidden grid-rows-6 rounded-lg"> 
+        <div class="row-span-1 grid items-center border-b-[1px]">
+          <p class="pl-6 font-bold">Cart</p>
+        </div>
+
+        <ul id="shopping-cart-list" class="h-full overflow-y-auto row-span-3 grid gap-4 w-[95%] justify-self-center">
+          <li id="no-cart-items-message" class="grid place-items-center font-bold text-dark_grayish_blue">
+            <p>Your cart is empty.</p>
+          </li>
+        </ul>
+        
+        <button class="row-span-2 bg-orange justify-self-center w-[95%] h-[60px] rounded-xl text-white font-bold">Checkout</button>
+      </aside>
     </nav>
 
-    <div class="bg-blue-500 h-full row-span-5">
+    <article class="h-full row-span-5 grid lg:grid-cols-2 grid-cols-1 lg:gap-0 gap-12">
+      <div class="h-full grid content-center gap-8">
+        <div class="w-full max-w-[500px] justify-self-center h-full grid place-items-center relative">
+          <img class="product-image max-w-[500px] w-full h-auto object-cover sm:rounded-2xl lg:cursor-pointer" src="images/image-product-1.jpg" alt="product-image">
+          <img class="product-image max-w-[500px] w-full h-auto object-cover sm:rounded-2xl lg:cursor-pointer hidden" src="images/image-product-2.jpg" alt="product-image">
+          <img class="product-image max-w-[500px] w-full h-auto object-cover sm:rounded-2xl lg:cursor-pointer hidden" src="images/image-product-3.jpg" alt="product-image">
+          <img class="product-image max-w-[500px] w-full h-auto object-cover sm:rounded-2xl lg:cursor-pointer hidden" src="images/image-product-4.jpg" alt="product-image">
+
+          <div class="absolute w-full lg:hidden flex justify-between h-[40px]">
+            <div id="prev-slide-mobile" class="bg-white rounded-full w-[50px] h-[50px] grid place-items-center relative cursor-pointer left-5">
+              <img src="images/icon-previous.svg" alt="previous-image">
+            </div>
+            <div id="next-slide-mobile" class="bg-white rounded-full w-[50px] h-[50px] grid place-items-center relative cursor-pointer right-5">
+              <img src="images/icon-next.svg" alt="next-image">
+            </div>
+          </div>
+        </div>
+        <div class="justify-center space-x-[30px] lg:flex hidden">
+          <img class="product-image-button rounded-2xl max-w-[100px] cursor-pointer hover:opacity-30" src="images/image-product-1-thumbnail.jpg" alt="image-product-thumbnail">
+          <img class="product-image-button rounded-2xl max-w-[100px] cursor-pointer hover:opacity-30" src="images/image-product-2-thumbnail.jpg" alt="image-product-thumbnail">
+          <img class="product-image-button rounded-2xl max-w-[100px] cursor-pointer hover:opacity-30" src="images/image-product-3-thumbnail.jpg" alt="image-product-thumbnail">
+          <img class="product-image-button rounded-2xl max-w-[100px] cursor-pointer hover:opacity-30" src="images/image-product-4-thumbnail.jpg" alt="image-product-thumbnail">
+        </div>
+      </div>
+
+      <div class="grid items-center justify-center">
+        <div class="sm:w-full w-[90%] justify-self-center">
+          <div>
+            <p class="tracking-widest font-bold text-sm text-pale_orange">SNEAKER COMPANY</p>
+            <h1 class="whitespace-pre-line sm:text-5xl text-3xl font-bold">
+              Fall Limited Edition
+              Sneakers
+            </h1>
+            <p class="whitespace-pre-line text-dark_grayish_blue">
+              These low-profile sneakers are your perfect casual wear 
+              companion. Featuring a durable rubber outer sole, they'll
+              withstand everything the weather can offer.
+            </p>
+          </div>
+
+          <div class="mt-6 sm:grid sm:gap-2 flex items-center justify-between">
+            <div class="flex space-x-4 items-center">
+              <p class="text-3xl font-bold">$125</p>
+              <p class="bg-very_light_orange w-[40px] h-[25px] grid place-items-center rounded-md text-orange font-bold">50%</p>
+            </div>
+            <p class="line-through text-grayish_blue font-bold">$250.00</p>
+          </div>
+
+          <div class="mt-6 sm:flex sm:gap-0 gap-8 grid place-items-center sm:space-x-4 lg:mb-0 mb-12">
+            <div class="flex items-center sm:w-[40%] w-full h-[60px] bg-light_grayish_blue rounded-lg">
+              <div id="decrement-amount" class="cursor-pointer w-full h-full grid sm:justify-center justify-start items-center">
+                <img src="images/icon-minus.svg" alt="decrement-prouduct-amount-button">
+              </div>
+              <span id="amount">0</span>
+              <div id="increment-amount" class="cursor-pointer w-full h-full grid sm:justify-center justify-end items-center">
+                <img src="images/icon-plus.svg" alt="increment-prouduct-amount-button">
+              </div>
+            </div>
+
+            <button class="bg-pale_orange rounded-lg sm:w-[60%] w-full h-[60px] shadow-xl shadow-shadow_orange">
+              <span class="flex justify-center items-center space-x-4">
+                <svg width="22" height="20" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M20.925 3.641H3.863L3.61.816A.896.896 0 0 0 2.717 0H.897a.896.896 0 1 0 0 1.792h1l1.031 11.483c.073.828.52 1.726 1.291 2.336C2.83 17.385 4.099 20 6.359 20c1.875 0 3.197-1.87 2.554-3.642h4.905c-.642 1.77.677 3.642 2.555 3.642a2.72 2.72 0 0 0 2.717-2.717 2.72 2.72 0 0 0-2.717-2.717H6.365c-.681 0-1.274-.41-1.53-1.009l14.321-.842a.896.896 0 0 0 .817-.677l1.821-7.283a.897.897 0 0 0-.87-1.114ZM6.358 18.208a.926.926 0 0 1 0-1.85.926.926 0 0 1 0 1.85Zm10.015 0a.926.926 0 0 1 0-1.85.926.926 0 0 1 0 1.85Zm2.021-7.243-13.8.81-.57-6.341h15.753l-1.383 5.53Z" fill="white" fill-rule="nonzero"/>
+                </svg>
+                <p id="add-to-cart" class="text-white">Add to cart</p>
+              </span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </article>
+  </header>
+
+  <!-- modal image slider -->
+  <figure id="modal" class="absolute z-40 top-0 w-full h-full min-h-[900px] bg-black lg:hidden hidden content-center gap-12">
+    <div class="w-full h-full relative grid justify-items-center">
+      <div class="relative grid items-center">
+
+        <div id="close-modal" class="absolute -top-12 justify-self-end cursor-pointer">
+          <svg class="hover:fill-orange fill-white" width="14" height="15" xmlns="http://www.w3.org/2000/svg">
+            <path d="m11.596.782 2.122 2.122L9.12 7.499l4.597 4.597-2.122 2.122L7 9.62l-4.595 4.597-2.122-2.122L4.878 7.5.282 2.904 2.404.782l4.595 4.596L11.596.782Z" fill-rule="evenodd"/>
+          </svg>
+        </div>
+
+        <img class="modal-images hidden max-w-[600px] w-full h-auto object-cover rounded-2xl" src="images/image-product-1.jpg" alt="product-image">
+        <img class="modal-images hidden max-w-[600px] w-full h-auto rounded-2xl" src="images/image-product-2.jpg" alt="product-image">
+        <img class="modal-images hidden max-w-[600px] w-full h-auto rounded-2xl" src="images/image-product-3.jpg" alt="product-image">
+        <img class="modal-images hidden max-w-[600px] w-full h-auto rounded-2xl" src="images/image-product-4.jpg" alt="product-image">
+
+
+        <div class="absolute w-full flex justify-between h-[40px]">
+          <div id="prev-slide" class="bg-white rounded-full w-[50px] h-[50px] grid place-items-center relative right-6 cursor-pointer">
+            <img src="images/icon-previous.svg" alt="previous-image">
+          </div>
+          <div id="next-slide" class="bg-white rounded-full w-[50px] h-[50px] grid place-items-center relative left-6 cursor-pointer">
+            <img src="images/icon-next.svg" alt="next-image">
+          </div>
+        </div>
+      </div>
 
     </div>
-  </header>
+
+    <div class=" flex justify-self-center space-x-10">
+      <img class="w-[100px] rounded-xl cursor-pointer modal-product-image-button" src="images/image-product-1-thumbnail.jpg" alt="slider-button-navigation">
+      <img class="w-[100px] rounded-xl cursor-pointer modal-product-image-button" src="images/image-product-2-thumbnail.jpg" alt="slider-button-navigation">
+      <img class="w-[100px] rounded-xl cursor-pointer modal-product-image-button" src="images/image-product-3-thumbnail.jpg" alt="slider-button-navigation">
+      <img class="w-[100px] rounded-xl cursor-pointer modal-product-image-button" src="images/image-product-4-thumbnail.jpg" alt="slider-button-navigation">
+    </div>
+
+
+  </figure>
 
 </body>
 </html>

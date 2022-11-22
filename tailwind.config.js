@@ -15,6 +15,9 @@ module.exports = {
         light_grayish_blue: "hsl(223, 64%, 98%)",
         white: "hsl(0, 0%, 100%)",
         black: "hsl(0, 0%, 0%, 75%)", // 75% opacity needed
+
+        very_light_orange: "hsl(26, 100%, 55%, 20%)",
+        shadow_orange: "hsl(26, 100%, 55%, 40%)",
       }
     },
   },
