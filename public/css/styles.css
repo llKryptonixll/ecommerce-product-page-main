@@ -615,6 +615,10 @@ video {
   z-index: 40;
 }
 
+.z-30 {
+  z-index: 30;
+}
+
 .row-span-1 {
   grid-row: span 1 / span 1;
 }
